@@ -56,3 +56,9 @@ section {
     text-align: left;
 
 }
+@media (min-width:600px){
+    body{
+    flex-direction:row;
+        padding:0px 30px;
+    }
+}
