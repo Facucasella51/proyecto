@@ -21,25 +21,166 @@
         </center>
 
     </header>
-    <nav>
-        <center>
-            <a href="">paso1</a>
-            <a href="">paso2</a>
-            <a href="">paso3</a>
-            <a href="">paso4</a>
-            <a href="">paso5</a>
-            <a href="">paso6</a>
-            <a href="">paso6</a>
-            <a href="">paso7</a>
-            <a href="">paso8</a>
-            <a href="">paso9</a>
-        </center>
-    </nav>
+
     <center>
         <section>
-            informacion
+            <article>
+                <p>iniciar sesion</p>
+                $ git config --global user.name "Mr. Floyd"
+                $ git config --global user.email mr.floyd@ues.edu.sv
+            </article>
+            <article>
+                <p>Puedes ver tu configuracion actual ejecutando</p>
+                $ git config --list
+                user.name= Mr. Floyd
+                user.email=mr.floyd@cshluesocc.org
+            </article>
+            <article>
+                <p>Vamos a comenzar creando un directorio en el lugar que queramos y le diremos a git que
+                    $ mkdir practica-git && cd practica-git
+                    $ git init
+                    Initialized empty Git repository in ~/practica-git/.git/
+            </article>
+            <article>
+                <p>git init crea un subdirectorio llamado .git donde se encuentran los archivos necesarios
+                    para llevar el control de tu directorio actual</p>
+                $ ls -a
+                $ ls .git/
+            </article>
+            <article>
+                <p>git status nos da informacion sobre nuestro repositorio actual, nos dice si algo cambio, si
+                    hay conflicto, etc</p>
+                $ git config --global user.name "Mr. Floyd"
+                $ git config --global user.email mr.floyd@ues.edu.sv
+            </article>
+            <article>
+                <p>Creemos un archivo sencillo dentro de nuestro directorio actual y veamos que nos dice git </p>
+                <br>
+                $ touch script.py
+                <br>
+                $ git status
+                <br>
+                # On branch master
+                <br>
+                # Initial commit
+                <br>
+                ls
+                <br>
+                # Untracked files:
+                <br>
+                # (use "git add <file>..." to include in what will be committed)
+                    <br>
+                    # script.py
+                    <br>
+                    nothing added to commit but untracked files present (use "git add" to track)
+
+                    <br>
+                    <p>
+                        Nos damos cuenta que git ha detectado que hemos hecho cambios en nuestro directorio, en
+                        este caso hemos agregado un archivo nuevo y git nos pide que usemos “git add” para
+                        poder llevar control de este archivo, procedamos entonces:
+                    </p>
+
+                    $ git add script.py
+                    <br>
+                    $ git status
+                    # On branch master
+                    <br>
+                    # Initial commit
+                    <br>
+                    # Changes to be committed:
+                    <br>
+                    # (use "git rm --cached <file>..." to unstage)
+                        <br>
+                        # new file: script.py
+                        <p>
+                            Hemos incluido nuestro archivo, pero falta un paso y es confirmar (commit) los cambios:
+                        </p>
+                        $ git commit -m “script inicial”
+                        <br>
+                        [master (root-commit) 3ccd2e0] script inicial
+                        0 files changed
+                        <br>
+                        create mode 100644 script.py
+                        <br>
+                        $git status
+                        <br>
+                        # On branch master
+                        <br>
+                        nothing to commit (working directory clean)
+                        <p> Como hemos visto el proceso de agregar un archivo para que git lleve su control consta de
+                            dos pasos, agregar (add) y confirmar (commit). El comando git add «archivo» puede
+                            resultar tedioso si tenemos varios archivos y queremos agregarlos todos, pues tendríamos
+                            que agregar archivo por archivo, pero git nos ofrece otro comando útil: git add
+                        </p>
+
+            </article>
+            <article>
+                <p>clonando repositorios</p>
+                Comencemos entonces con la practica, copiemos el vinculo “clone url” y abramos una
+                terminal y ejecutemos el comando clone:
+                <br>
+                $ git clone https://github.com/carloscarcamo/practica-git.git
+                .....
+                $ cd practica-git
+                $ ls
+            </article>
+            <article>
+                <p>ENVIANDO CAMBIOS AL REPOSITORIO REMOTO</p>
+                Ahora estamos listos para agregar y modificar nuevos archivos dentro de este repositorio y
+                enviar los cambios a github, procedamos entonces agregando un par de archivos y
+                directorios:
+                <br>
+                $ mkdir css js
+                $ touch index.html
+
+                <br>
+                Hemos añadido dos directorios y un archivo nuevos, veamos que ha detectado git dentro de
+                nuestro repositorio:
+                <br>
+                $ git status
+                <p>
+                    A pesar de que hemos agregado dos directorios nuevos, git no detecta esos cambios, eso
+                    es debido a que git no lleva control de los directorios sino de archivos, al momento en que
+                    agreguemos un archivo en cualquiera de esos directorios podremos ver que git nos
+                    informará de ello, creemos un archivo entonces dentro de uno de esos directorios:
+                </p>
+                $ touch js/app.js
+                $ git status
+
+                <p>
+                    Todo bien, ahora agreguemos los archivos y hagamos un commit:
+                    Enviando cambios al repositorio remoto
+                </p>
+                $ git add .
+                $ git commit -am “Inicio de proyecto”
+                <p>
+                    Veamos ahora la salida del comando git status, “Your branch is ahead of 'origin/master'
+                    by 1 commit.” Podemos comprobar si tenemos diferencias entre
+                    nuestra repo local y la repo remota haciendo un diff así:
+                </p>
+                $ git diff origin/master master
+                <p>
+
+                    Enviemos nuestros cambios a github:
+                </p>
+
+                $ git push origin master
+
+
+                $ git status
+                <p>
+                    Git nos pide nuestro usuario y contraseña para poder enviar los cambios, luego podemos
+                    ver que git status nos muestra que tenemos nuestro repositorio local y remoto actualizados.
+                    hemos hecho nuestro primer commit a un repositorio remoto.
+                </p>
+            </article>
+
         </section>
     </center>
+
+
+
 
     <script src="script.js"></script>
 

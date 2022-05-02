@@ -1,0 +1,155 @@
+paso 1
+iniciar sesion
+
+$ git config --global user.name "Mr. Floyd"
+$ git config --global user.email mr.floyd@ues.edu.sv
+
+
+paso 2
+
+Puedes ver tu configuraci�n actual ejecutando:
+$ git config --list
+user.name= Mr. Floyd
+user.email=mr.floyd@cshluesocc.org
+
+
+paso 3
+
+Vamos a comenzar creando un directorio en el lugar que queramos y le diremos a git que
+tome el control de todo lo que en el hagamos:
+$ mkdir practica-git && cd practica-git
+$ git init
+Initialized empty Git repository in ~/practica-git/.git/
+
+
+git init crear� un subdirectorio llamado .git donde se encuentran los archivos necesarios
+para llevar el control de tu directorio actual.
+$ ls -a
+$ ls .git/
+
+
+
+paso 4
+git status nos da informaci�n sobre nuestro repositorio actual, nos dice si algo cambio, si
+hay conflicto, etc.
+$ git status
+# On branch master
+#
+# Initial commit
+
+
+paso 5
+
+Creemos un archivo sencillo dentro de nuestro directorio actual y veamos que nos dice git
+status:
+
+$ touch script.py
+$ git status
+# On branch master
+#
+# Initial commit
+ls
+#
+# Untracked files:
+# (use "git add <file>..." to include in what will be committed)
+#
+# script.py
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+Nos damos cuenta que git ha detectado que hemos hecho cambios en nuestro directorio, en
+este caso hemos agregado un archivo nuevo y git nos pide que usemos �git add� para
+poder llevar control de este archivo, procedamos entonces:
+
+$ git add script.py
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+# (use "git rm --cached <file>..." to unstage)
+#
+# new file: script.py
+
+
+
+Hemos incluido nuestro archivo, pero falta un paso y es confirmar (commit) los cambios:
+
+$ git commit -m �script inicial�
+[master (root-commit) 3ccd2e0] script inicial
+0 files changed
+create mode 100644 script.py
+$ git status
+# On branch master
+nothing to commit (working directory clean)
+
+Como hemos visto el proceso de agregar un archivo para que git lleve su control consta de
+dos pasos, agregar (add) y confirmar (commit). El comando git add �archivo� puede
+resultar tedioso si tenemos varios archivos y queremos agregarlos todos, pues tendr�amos
+que agregar archivo por archivo, pero git nos ofrece otro comando �til: git add
+
+
+
+
+
+
+paso 6
+
+clonando repositorios
+
+Comencemos entonces con la practica, copiemos el vinculo �clone url� y abramos una
+terminal y ejecutemos el comando clone:
+$ git clone https://github.com/carloscarcamo/practica-git.git
+.....
+$ cd practica-git
+$ ls
+
+PASO 7	
+ENVIANDO CAMBIOS AL REPOSITORIO REMOTO
+
+Ahora estamos listos para agregar y modificar nuevos archivos dentro de este repositorio y
+enviar los cambios a github, procedamos entonces agregando un par de archivos y
+directorios:
+$ mkdir css js
+$ touch index.html
+
+
+Hemos a�adido dos directorios y un archivo nuevos, veamos que ha detectado git dentro de
+nuestro repositorio:
+$ git status
+
+A pesar de que hemos agregado dos directorios nuevos, git no detecta esos cambios, eso
+es debido a que git no lleva control de los directorios sino de archivos, al momento en que
+agreguemos un archivo en cualquiera de esos directorios podremos ver que git nos
+informar� de ello, creemos un archivo entonces dentro de uno de esos directorios:
+$ touch js/app.js
+$ git status
+
+
+
+Todo bien, ahora agreguemos los archivos y hagamos un commit:
+Enviando cambios al repositorio remoto
+
+$ git add .
+$ git commit -am �Inicio de proyecto�
+
+
+Veamos ahora la salida del comando git status, �Your branch is ahead of 'origin/master'
+by 1 commit.� Podemos comprobar si tenemos diferencias entre
+nuestra repo local y la repo remota haciendo un diff as�:
+$ git diff origin/master master
+
+Enviemos nuestros cambios a github:
+$ git push origin master
+
+
+$ git status
+
+Git nos pide nuestro usuario y contrase�a para poder enviar los cambios, luego podemos
+ver que git status nos muestra que tenemos nuestro repositorio local y remoto actualizados.
+
+
+hemos hecho nuestro primer commit a un repositorio remoto.
+
+
